@@ -1,9 +1,3 @@
-# UsdaFdc
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/usda_fdc`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,7 +16,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Create API client (visit https://fdc.nal.usda.gov/api-key-signup.html to get an API_KEY)
+fdc = UsdaFdc::Client.new('API_KEY')
+
+#Currently supports:
+generalSearch input
+
+food_search_result = fdc.search("Cheddar Cheese")
+
+food_search_result is a hash of FDC API Response Fields with ['foods'] being an array of response fields.
+
+You can then get all info regarding a specific food by calling the details method on the client object, with an 'fdcId' from a food.
+
+food_details = fdc.details(food_search_result['foods'][0]['fdcId'])
+
+food_details is a hash with keys being API Food Response Fields
 
 ## Development
 
@@ -32,7 +40,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/usda_fdc.
+Bug reports and pull requests are welcome on GitHub at https://github.com/alexDude/usda_fdc-ruby.
 
 ## License
 
