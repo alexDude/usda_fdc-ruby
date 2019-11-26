@@ -24,7 +24,7 @@ generalSearch input
 
 food_search_result = fdc.search("Cheddar Cheese")
 
-food_search_result is a hash of FDC API Response Fields with ['foods'] being an array of response fields.
+food_search_result is a hash of FDC API Response Fields with ['foods'] being an array of foods with select response fields.
 
 You can then get all info regarding a specific food by calling the details method on the client object, with an 'fdcId' from a food.
 
