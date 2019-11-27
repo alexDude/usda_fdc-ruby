@@ -17,6 +17,8 @@ Or install it yourself as:
 ## Usage
 
 Create API client (visit https://fdc.nal.usda.gov/api-key-signup.html to get an API_KEY)
+
+
 fdc = UsdaFdc::Client.new('API_KEY')
 
 #Currently supports:
