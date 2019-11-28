@@ -16,14 +16,14 @@ Or install it yourself as:
 
 ## Usage
 
-# Create API client object (visit https://fdc.nal.usda.gov/api-key-signup.html to get an API_KEY)
+### Create API client object (visit https://fdc.nal.usda.gov/api-key-signup.html to get an API_KEY)
 
 
 fdc = UsdaFdc::Client.new('API_KEY')
 
 The fdc  API object can be called with a simple search string alone, with an additional options hash, or with an options hash alone (see Note).
 The keys being the request parameters from the API.
-### Note
+##### Note
 If the 'generalSearchInput' key:value is set in the options hash, it will take precedence over a supplied search term.
 ```
 fdc.search(supplied_search_string, options => {"generalSearchInput": what_will_actually_be_searched})
