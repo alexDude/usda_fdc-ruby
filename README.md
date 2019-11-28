@@ -16,19 +16,25 @@ Or install it yourself as:
 
 ## Usage
 
-Create API client (visit https://fdc.nal.usda.gov/api-key-signup.html to get an API_KEY)
+# Create API client object (visit https://fdc.nal.usda.gov/api-key-signup.html to get an API_KEY)
 
 
 fdc = UsdaFdc::Client.new('API_KEY')
 
-#Currently supports:
-generalSearch input
+The fdc  API object can be called with a simple search string alone, with an additional options hash, or with an options hash alone (see Note).
+The keys being the request parameters from the API.
+### Note
+If the 'generalSearchInput' key:value is set in the options hash, it will take precedence over a supplied search term.
+```
+fdc.search(supplied_search_string, options => {"generalSearchInput": what_will_actually_be_searched})
+```
+
 
 food_search_result = fdc.search("Cheddar Cheese")
 
 food_search_result is a hash of FDC API Response Fields with ['foods'] being an array of foods with select response fields.
 
-You can then get all info regarding a specific food by calling the details method on the client object, with an 'fdcId' from a food.
+You can then get all info regarding a specific food by calling the details method on the API object, with an 'fdcId' from a food.
 
 food_details = fdc.details(food_search_result['foods'][0]['fdcId'])
 

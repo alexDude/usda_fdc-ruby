@@ -14,24 +14,25 @@ module UsdaFdc
 
     API_ENDPOINT = 'https://api.nal.usda.gov/fdc/v1'
 
-    attr_reader :oauth_token
+    attr_reader :api_key
 
-    def initialize(oauth_token = nil)
-      @oauth_token = oauth_token
+    def initialize(api_key = nil)
+      @api_key = api_key
     end
 
-    def search(search_term)
+    def search(search_term, options = {})
+      options["generalSearchInput"] = search_term unless options.key?("generalSearchInput")
       request(
         http_method: :post,
-        endpoint: "search?api_key=#{@oauth_token}",
-        params: {"generalSearchInput": search_term}.to_json
+        endpoint: "search?api_key=#{@api_key}",
+        params: options.to_json
       )
     end
 
     def details(food_fdc_num)
       request(
         http_method: :get,
-        endpoint: "#{food_fdc_num}?api_key=#{oauth_token}"
+        endpoint: "#{food_fdc_num}?api_key=#{api_key}"
       )
     end
 
