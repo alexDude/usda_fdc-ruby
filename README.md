@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ### Create API client object (visit https://fdc.nal.usda.gov/api-key-signup.html to get an API_KEY)
 
-
+The API_KEY can be set in 'config.yml' or supplied when creating the API object.
 fdc = UsdaFdc::Client.new('API_KEY')
 
 The fdc  API object can be called with a simple search string alone, with an additional options hash, or with an options hash alone (see Note).

@@ -11,13 +11,23 @@ module UsdaFdc
     require 'oj'
     require 'faraday'
     require 'json'
+    require 'yaml'
 
     API_ENDPOINT = 'https://api.nal.usda.gov/fdc/v1'
 
     attr_reader :api_key
 
-    def initialize(api_key)
-      @api_key = api_key
+    def initialize(api_key = nil)
+      if api_key.nil?
+        if File.file?("./lib/config.yml")
+          config = YAML.load_file("./lib/config.yml")
+          @api_key = config["API_KEY"]
+        else
+          # Raise error - no API_KEY provided, no config.yml
+        end
+      else
+        @api_key = api_key
+      end
     end
 
     def search(search_term, options = {})
@@ -34,6 +44,10 @@ module UsdaFdc
         http_method: :get,
         endpoint: "#{food_fdc_num}?api_key=#{api_key}"
       )
+    end
+
+    def display_api_key
+      puts @api_key
     end
 
     private

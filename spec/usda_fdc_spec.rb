@@ -7,8 +7,12 @@ RSpec.describe UsdaFdc do
   #   expect(false).to eq(true)
   # end
 
-  it "fails on client create without an api_key provided" do
-    expect{UsdaFdc::Client.new}.to raise_error (ArgumentError)
+  # it "fails on client create without an api_key provided" do
+  #   expect{UsdaFdc::Client.new}.to raise_error (ArgumentError)
+  # end
+
+  it "uses api_key from config.yml if provided" do
+    expect{UsdaFdc::Client.new}.to be_an_instance_of(UsdaFdc::Client)
   end
 
 end

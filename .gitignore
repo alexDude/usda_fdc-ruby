@@ -12,3 +12,6 @@
 
 # Ignore all files with the .gem extension
 *.gem
+
+# Ignore API_KEY
+lib/config.yml
