@@ -7,7 +7,7 @@ RSpec.describe UsdaFdc do
   #   expect(false).to eq(true)
   # end
 
-  it "fails without an api_key provided" do
+  it "fails on client create without an api_key provided" do
     expect{UsdaFdc::Client.new}.to raise_error (ArgumentError)
   end
 
